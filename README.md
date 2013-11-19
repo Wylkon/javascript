@@ -9,7 +9,7 @@
   1. [Objetos](#objetos)
   1. [Arrays](#arrays)
   1. [Strings](#strings)
-  1. [Functions](#functions)
+  1. [Funções](#funcoes)
   1. [Properties](#properties)
   1. [Variables](#variables)
   1. [Hoisting](#hoisting)
@@ -266,56 +266,56 @@
     **[[⬆]](#TOC)**
 
 
-## <a name='functions'>Functions</a>
+## <a name='funcoes'>Funções</a>
 
-  - Function expressions:
+  - Expressões de funções:
 
     ```javascript
-    // anonymous function expression
-    var anonymous = function() {
+    // expressão de função anônima
+    var anonima = function() {
       return true;
     };
 
-    // named function expression
-    var named = function named() {
+    // expressão de função nomeada
+    var funcaoNomeada = function funcaoNomeada() {
       return true;
     };
 
-    // immediately-invoked function expression (IIFE)
+    // expressão de função auto-executável
     (function() {
       console.log('Welcome to the Internet. Please follow me.');
     })();
     ```
 
-  - Never declare a function in a non-function block (if, while, etc). Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently, which is bad news bears.
+  - Nunca declare uma função em bloco que não seja de função. Melhor atribuir a função para uma variavel. Os Navegadores irão permitir, mas a interpretação disso é problemática, podendo gerar erros em algum momento.
 
     ```javascript
     // ruim
-    if (currentUser) {
-      function test() {
-        console.log('Nope.');
+    if (usuarioAtual) {
+      function teste() {
+        console.log('Nooon.');
       }
     }
 
     // bom
-    if (currentUser) {
-      var test = function test() {
-        console.log('Yup.');
+    if (usuarioAtual) {
+      var teste = function teste() {
+        console.log('Isso!');
       };
     }
     ```
 
   - Never name a parameter `arguments`, this will take precendence over the `arguments` object that is given to every function scope.
-
+  - Nunca nomeie um parâmetro como 'arguments'. Isso sobrescrevá o objeto 'arguments' que é passado para cada função.
     ```javascript
     // ruim
-    function nope(name, options, arguments) {
-      // ...stuff...
+    function errado(nome, opcoes, arguments) {
+      console.log( nome, opcoes, arguments )
     }
 
     // bom
-    function yup(name, options, args) {
-      // ...stuff...
+    function certo(nome, opcoes, args) {
+      console.log( nome, opcoes, args )
     }
     ```
 
