@@ -150,31 +150,31 @@
 
 ## <a name='arrays'>Arrays</a>
 
-  - Use the literal syntax for array creation
+  - Use a sintaxe literal para a criação de Arrays.
 
     ```javascript
-    // bad
+    // ruim
     var items = new Array();
 
-    // good
+    // bom
     var items = [];
     ```
 
-  - For [performance reasons](http://jsperf.com/array-direct-assignment-vs-push/5) use direct assignment over Array#push
+  - Por [questões de performance](http://jsperf.com/array-direct-assignment-vs-push/5) prefira declaração direta de novo valor em vez de utilizar Array#push
 
     ```javascript
-    var len = items.length,
-        itemsCopy = [],
+    var tamanhoArray = items.length,
+        itemsCopia = [],
         i;
 
-    // bad
-    for (i = 0; i < len; i++) {
-      itemsCopy.push(items[i])
+    // ruim
+    for (i = 0; i < tamanhoArray; i++) {
+      itemsCopia.push(items[i])
     }
 
-    // good
-    for (i = 0; i < len; i++) {
-      itemsCopy[i] = items[i];
+    // bom
+    for (i = 0; i < tamanhoArray; i++) {
+      itemsCopia[i] = items[i];
     }
     ```
 
