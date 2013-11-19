@@ -3,10 +3,10 @@
 *A mostly reasonable approach to JavaScript*
 
 
-## <a name='TOC'>Table of Contents</a>
+## <a name='TOC'>Índice</a>
 
   1. [Tipos](#tipos)
-  1. [Objetos](#objects)
+  1. [Objetos](#objetos)
   1. [Arrays](#arrays)
   1. [Strings](#strings)
   1. [Functions](#functions)
@@ -73,7 +73,7 @@
     ```javascript
     var pessoa1 = {nome: "João", idade: 32};
     var pessoa2 = pessoa1;
-    
+
     console.log( pessoa1 ); // exibe: Object {nome: "João", idade: 32}
     console.log( pessoa2 ); // exibe: Object {nome: "João", idade: 32}
 
@@ -84,35 +84,75 @@
 
     **[[⬆]](#TOC)**
 
-## <a name='objects'>Objects</a>
+## <a name='objetos'>Objetos</a>
 
-  - Use the literal syntax for object creation.
+  - Utilize a sintaxe literal para criação de objetos
 
     ```javascript
-    // bad
+    // ruim
     var item = new Object();
 
-    // good
+    // bom
     var item = {};
     ```
 
   - Don't use [reserved words](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Reserved_Words) as keys.
+  - Não utilize [palavars reservadas do javascript](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Reserved_Words) como índices de objetos.
+
 
     ```javascript
-    // bad
-    var superman = {
-      class: 'superhero',
-      default: { clark: kent },
-      private: true
+    // ruim
+    var superHomem = {
+      class   : 'super heroí', // class é uma palavra reservada para um possível uso futuro do javascript
+      default : { clark: kent }, // default é uma palavra utilizada no 'switch ... case'
+      private : true // private é uma palavra reservada para um possível uso futuro do javascript
     };
 
-    // good
-    var superman = {
-      klass: 'superhero',
-      defaults: { clark: kent },
-      hidden: true
+    // bom
+    var superHomem = {
+      classe   : 'super heroí', // escreva em portugues ou trocando uma letra (ex.: klass)
+      defaults : { clark: kent }, // plural
+      hidden   : true // troque por uma palavra com mesmo significado
     };
     ```
+    
+    Segue a lista de palavars reservadas do javascript:
+
+    | Palavras que já existem no JS       |
+    | ---------- |:----------:| ---------:|
+    | case       | finally    | switch    |
+    | catch      | for        | this      |
+    | continue   | function   | throw     |
+    | debugger   | if         | try       |
+    | default    | in         | typeof    |
+    | delete     | instanceof | var       |
+    | do         | new        | void      |
+    | else       | return     | null      |
+    | with       | while      |           |
+    | true       | false      |           |
+    | ---------- |:----------:| ---------:|
+    | Reservadas para uso futuro          |
+    | ---------- |:----------:| ---------:|
+    | class      | enum       | export    |
+    | extends    | import     | super     |
+    | implements | interface  | let       |
+    | package    | private    | protected |
+    | public     | static     | yield     |
+    | const      |            |           |
+
+    Utilizando ```"use strict"``` o javascript avisa quando você usa alguma dessas palavras no seu código.
+
+    Uma maneira de utilizá-las, é como string, mas é boa prática evitar se for possível. Exemplo:
+
+  ```javascript
+    // ruim
+    var superHomem = {
+      'class'  : 'super heroí',
+      'default': { clark: kent },
+      'private': true 
+    };
+    ```
+
     **[[⬆]](#TOC)**
 
 ## <a name='arrays'>Arrays</a>
