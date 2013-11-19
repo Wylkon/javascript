@@ -214,9 +214,9 @@
      Seria melhor divir ela em mais linhas.';
 
     // bom
-    var mensagemErro = 'Esta é uma mensagem de erro muito longa.
-     'Ela tem mais de 80 caracteres e é dificíl de ler, '+'
-     'aumentando a chance de ter algum erro nela. '+'
+    var mensagemErro = 'Esta é uma mensagem de erro muito longa.' +
+     'Ela tem mais de 80 caracteres e é dificíl de ler, ' +
+     'aumentando a chance de ter algum erro nela. ' +
      'Seria melhor divir ela em mais linhas.';
     ```
 
