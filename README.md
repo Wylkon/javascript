@@ -183,83 +183,80 @@
 
 ## <a name='strings'>Strings</a>
 
-  - Use single quotes `''` for strings
+  - Utilize aspas simples `''` para strings
 
     ```javascript
-    // bad
-    var name = "Bob Parr";
+    // ruim
+    var nome = "João Silva";
 
-    // good
-    var name = 'Bob Parr';
+    // bom
+    var nome = 'João Silva';
 
-    // bad
-    var fullName = "Bob" + this.lastName;
+    // ruim
+    var nomeCompleto = "João" + this.sobrenome;
 
-    // good
-    var fullName = 'Bob' + this.lastName;
+    // bom
+    var nomeCompleto = 'João' + this.sobrenome;
     ```
 
   - Strings longer than 80 characters should be written across multiple lines using string concatenation.
+  - Strings maiores que 80 caracteres devem ser escritas em múltiplas linhas, usando concatenação.
 
     ```javascript
-    // bad
-    var errorMessage = 'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.';
+    // ruim
+    var mensagemErro = 'Esta é uma mensagem de erro muito longa. Ela tem mais de 80 caracteres e é dificíl de ler, aumentando a chance de ter algum erro nela. Seria melhor divir ela em mais linhas.';
 
-    // bad
-    var errorMessage = 'This is a super long error that \
-    was thrown because of Batman. \
-    When you stop to think about \
-    how Batman had anything to do \
-    with this, you would get nowhere \
-    fast.';
+    // escapar quebras de linha também é ruim
+    // porque dificulta encontrar erros e prejudica a compressão do código
+    var mensagemErro = 'Esta é uma mensagem de erro muito longa.\
+     Ela tem mais de 80 caracteres e é dificíl de ler, aumentando \
+     a chance de ter algum erro nela. \
+     Seria melhor divir ela em mais linhas.';
 
-
-    // good
-    var errorMessage = 'This is a super long error that ' +
-      'was thrown because of Batman.' +
-      'When you stop to think about ' +
-      'how Batman had anything to do ' +
-      'with this, you would get nowhere ' +
-      'fast.';
+    // bom
+    var mensagemErro = 'Esta é uma mensagem de erro muito longa.
+     'Ela tem mais de 80 caracteres e é dificíl de ler, '+'
+     'aumentando a chance de ter algum erro nela. '+'
+     'Seria melhor divir ela em mais linhas.';
     ```
 
-  - When programatically building up a string, use Array#join instead of string concatenation. Mostly for IE: [jsPerf](http://jsperf.com/string-vs-array-concat/2).
+  - Quando estiver construindo uma string, prefira Array#join em vez de concatenar strings. Principalmente por causa do IE: [jsPerf](http://jsperf.com/string-vs-array-concat/2).
 
     ```javascript
     var items,
-        messages,
-        length, i;
+        messagens,
+        tamanho, i;
 
-    messages = [{
-        state: 'success',
-        message: 'This one worked.'
+    messagens = [{
+        estado : 'successo',
+        texto  : 'Este funcionou.'
     },{
-        state: 'success',
-        message: 'This one worked as well.'
+        estado : 'successo',
+        texto  : 'Este também funcionou'
     },{
-        state: 'error',
-        message: 'This one did not work.'
+        estado : 'erro',
+        texto  : 'Mas este não funcionou.'
     }];
 
-    length = messages.length;
+    tamanho = messagens.length;
 
-    // bad
-    function inbox(messages) {
+    // ruim
+    function inbox(messagens) {
       items = '<ul>';
 
       for (i = 0; i < length; i++) {
-        items += '<li>' + messages[i].message + '</li>';
+        items += '<li>' + messagens[i].texto + '</li>';
       }
 
       return items + '</ul>';
     }
 
-    // good
-    function inbox(messages) {
+    // bom
+    function inbox(messagens) {
       items = [];
 
       for (i = 0; i < length; i++) {
-        items[i] = '<li>' + messages[i].message + '</li>';
+        items[i] = '<li>' + messagens[i].texto + '</li>';
       }
 
       return '<ul>' + items.join('') + '</ul>';
@@ -293,14 +290,14 @@
   - Never declare a function in a non-function block (if, while, etc). Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently, which is bad news bears.
 
     ```javascript
-    // bad
+    // ruim
     if (currentUser) {
       function test() {
         console.log('Nope.');
       }
     }
 
-    // good
+    // bom
     if (currentUser) {
       var test = function test() {
         console.log('Yup.');
@@ -311,12 +308,12 @@
   - Never name a parameter `arguments`, this will take precendence over the `arguments` object that is given to every function scope.
 
     ```javascript
-    // bad
+    // ruim
     function nope(name, options, arguments) {
       // ...stuff...
     }
 
-    // good
+    // bom
     function yup(name, options, args) {
       // ...stuff...
     }
@@ -336,10 +333,10 @@
       age: 28
     };
 
-    // bad
+    // ruim
     var isJedi = luke['jedi'];
 
-    // good
+    // bom
     var isJedi = luke.jedi;
     ```
 
@@ -366,22 +363,22 @@
   - Always use `var` to declare variables. Not doing so will result in global variables. We want to avoid polluting the global namespace. Captain Planet warned us of that.
 
     ```javascript
-    // bad
+    // ruim
     superPower = new SuperPower();
 
-    // good
+    // bom
     var superPower = new SuperPower();
     ```
 
   - Use one `var` declaration for multiple variables and declare each variable on a newline.
 
     ```javascript
-    // bad
+    // ruim
     var items = getItems();
     var goSportsTeam = true;
     var dragonball = 'z';
 
-    // good
+    // bom
     var items = getItems(),
         goSportsTeam = true,
         dragonball = 'z';
@@ -390,18 +387,18 @@
   - Declare unassigned variables last. This is helpful when later on you might need to assign a variable depending on one of the previous assigned variables.
 
     ```javascript
-    // bad
+    // ruim
     var i, len, dragonball,
         items = getItems(),
         goSportsTeam = true;
 
-    // bad
+    // ruim
     var i, items = getItems(),
         dragonball,
         goSportsTeam = true,
         len;
 
-    // good
+    // bom
     var items = getItems(),
         goSportsTeam = true,
         dragonball,
@@ -411,7 +408,7 @@
   - Assign variables at the top of their scope. This helps avoid issues with variable declaration and assignment hoisting related issues.
 
     ```javascript
-    // bad
+    // ruim
     function() {
       test();
       console.log('doing stuff..');
@@ -427,7 +424,7 @@
       return name;
     }
 
-    // good
+    // bom
     function() {
       var name = getName();
 
@@ -443,7 +440,7 @@
       return name;
     }
 
-    // bad
+    // ruim
     function() {
       var name = getName();
 
@@ -454,7 +451,7 @@
       return true;
     }
 
-    // good
+    // bom
     function() {
       if (!arguments.length) {
         return false;
@@ -582,22 +579,22 @@
   - Use shortcuts.
 
     ```javascript
-    // bad
+    // ruim
     if (name !== '') {
       // ...stuff...
     }
 
-    // good
+    // bom
     if (name) {
       // ...stuff...
     }
 
-    // bad
+    // ruim
     if (collection.length > 0) {
       // ...stuff...
     }
 
-    // good
+    // bom
     if (collection.length) {
       // ...stuff...
     }
@@ -613,22 +610,22 @@
   - Use braces with all multi-line blocks.
 
     ```javascript
-    // bad
+    // ruim
     if (test)
       return false;
 
-    // good
+    // bom
     if (test) return false;
 
-    // good
+    // bom
     if (test) {
       return false;
     }
 
-    // bad
+    // ruim
     function() { return false; }
 
-    // good
+    // bom
     function() {
       return false;
     }
@@ -642,7 +639,7 @@
   - Use `/** ... */` for multiline comments. Include a description, specify types and values for all parameters and return values.
 
     ```javascript
-    // bad
+    // ruim
     // make() returns a new element
     // based on the pased in tag name
     //
@@ -655,7 +652,7 @@
       return element;
     }
 
-    // good
+    // bom
     /**
      * make() returns a new element
      * based on the pased in tag name
@@ -674,14 +671,14 @@
   - Use `//` for single line comments. Place single line comments on a newline above the subject of the comment. Put an emptyline before the comment.
 
     ```javascript
-    // bad
+    // ruim
     var active = true;  // is current tab
 
-    // good
+    // bom
     // is current tab
     var active = true;
 
-    // bad
+    // ruim
     function getType() {
       console.log('fetching type...');
       // set the default type to 'no type'
@@ -690,7 +687,7 @@
       return type;
     }
 
-    // good
+    // bom
     function getType() {
       console.log('fetching type...');
 
@@ -709,17 +706,17 @@
   - Use soft tabs set to 2 spaces
 
     ```javascript
-    // bad
+    // ruim
     function() {
     ∙∙∙∙var name;
     }
 
-    // bad
+    // ruim
     function() {
     ∙ var name;
     }
 
-    // good
+    // bom
     function() {
     ∙∙var name;
     }
@@ -727,23 +724,23 @@
   - Place 1 space before the leading brace.
 
     ```javascript
-    // bad
+    // ruim
     function test(){
       console.log('test');
     }
 
-    // good
+    // bom
     function test() {
       console.log('test');
     }
 
-    // bad
+    // ruim
     dog.set('attr',{
       age: '1 year',
       breed: 'Bernese Mountain Dog'
     });
 
-    // good
+    // bom
     dog.set('attr', {
       age: '1 year',
       breed: 'Bernese Mountain Dog'
@@ -752,14 +749,14 @@
   - Place an empty newline at the end of the file.
 
     ```javascript
-    // bad
+    // ruim
     (function(global) {
       // ...stuff...
     })(this);
     ```
 
     ```javascript
-    // good
+    // bom
     (function(global) {
       // ...stuff...
     })(this);
@@ -771,10 +768,10 @@
   - Use indentation when making long method chains.
 
   ```javascript
-  // bad
+  // ruim
   $('#items').find('.selected').highlight().end().find('.open').updateCount();
 
-  // good
+  // bom
   $('#items')
     .find('.selected')
       .highlight()
@@ -782,13 +779,13 @@
     .find('.open')
       .updateCount();
 
-  // bad
+  // ruim
   var leds = stage.selectAll('.led').data(data).enter().append("svg:svg").class('led', true)
       .attr('width',  (radius + margin) * 2).append("svg:g")
       .attr("transform", "translate(" + (radius + margin) + "," + (radius + margin) + ")")
       .call(tron.led);
 
-  // good
+  // bom
   var leds = stage.selectAll('.led')
       .data(data)
     .enter().append("svg:svg")
@@ -804,17 +801,17 @@
   - **Nope.**
 
     ```javascript
-    // bad
+    // ruim
     var once
       , upon
       , aTime;
 
-    // good
+    // bom
     var once,
         upon,
         aTime;
 
-    // bad
+    // ruim
     var hero = {
         firstName: 'Bob'
       , lastName: 'Parr'
@@ -822,7 +819,7 @@
       , superPower: 'strength'
     };
 
-    // good
+    // bom
     var hero = {
       firstName: 'Bob',
       lastName: 'Parr',
@@ -839,19 +836,19 @@
   - **Yup.**
 
     ```javascript
-    // bad
+    // ruim
     (function() {
       var name = 'Skywalker'
       return name
     })()
 
-    // good
+    // bom
     (function() {
       var name = 'Skywalker';
       return name;
     })();
 
-    // good
+    // bom
     ;(function() {
       var name = 'Skywalker';
       return name;
@@ -869,16 +866,16 @@
     ```javascript
     //  => this.reviewScore = 9;
 
-    // bad
+    // ruim
     var totalScore = this.reviewScore + '';
 
-    // good
+    // bom
     var totalScore = '' + this.reviewScore;
 
-    // bad
+    // ruim
     var totalScore = '' + this.reviewScore + ' total score';
 
-    // good
+    // bom
     var totalScore = this.reviewScore + ' total score';
     ```
 
@@ -887,13 +884,13 @@
     ```javascript
     var inputValue = '4';
 
-    // bad
+    // ruim
     var val = new Number(inputValue);
 
-    // good
+    // bom
     var val = Number(inputValue);
 
-    // good
+    // bom
     var val = +inputValue;
     ```
 
@@ -902,13 +899,13 @@
     ```javascript
     var age = 0;
 
-    // bad
+    // ruim
     var hasAge = new Boolean(age);
 
-    // good
+    // bom
     var hasAge = Boolean(age);
 
-    // good
+    // bom
     var hasAge = !!age;
     ```
 
@@ -920,12 +917,12 @@
   - Avoid single letter names. Be descriptive with your naming.
 
     ```javascript
-    // bad
+    // ruim
     function q() {
       // ...stuff...
     }
 
-    // good
+    // bom
     function query() {
       // ..stuff..
     }
@@ -934,27 +931,27 @@
   - Use camelCase when naming objects, functions, and instances
 
     ```javascript
-    // bad
+    // ruim
     var OBJEcttsssss = {};
     var this_is_my_object = {};
     var this-is-my-object = {};
     function c() {};
     var u = new user({
-      name: 'Bob Parr'
+      name: 'João Silva'
     });
 
-    // good
+    // bom
     var thisIsMyObject = {};
     function thisIsMyFunction() {};
     var user = new User({
-      name: 'Bob Parr'
+      name: 'João Silva'
     });
     ```
 
   - Use PascalCase when naming constructors or classes
 
     ```javascript
-    // bad
+    // ruim
     function user(options) {
       this.name = options.name;
     }
@@ -963,7 +960,7 @@
       name: 'nope'
     });
 
-    // good
+    // bom
     function User(options) {
       this.name = options.name;
     }
@@ -976,23 +973,23 @@
   - Use a leading underscore `_` when naming private properties
 
     ```javascript
-    // bad
+    // ruim
     this.__firstName__ = 'Panda';
     this.firstName_ = 'Panda';
     
-    // good
+    // bom
     this._firstName = 'Panda';
     ```
 
   - Name your functions. This is helpful for stack traces.
 
     ```javascript
-    // bad
+    // ruim
     var log = function(msg) {
       console.log(msg);
     };
 
-    // good
+    // bom
     var log = function log(msg) {
       console.log(msg);
     };
@@ -1007,28 +1004,28 @@
   - If you do make accessor functions use getVal() and setVal('hello')
 
     ```javascript
-    // bad
+    // ruim
     dragon.age();
 
-    // good
+    // bom
     dragon.getAge();
 
-    // bad
+    // ruim
     dragon.age(25);
 
-    // good
+    // bom
     dragon.setAge(25);
     ```
 
   - If the property is a boolean, use isVal() or hasVal()
 
     ```javascript
-    // bad
+    // ruim
     if (!dragon.age()) {
       return false;
     }
 
-    // good
+    // bom
     if (!dragon.hasAge()) {
       return false;
     }
@@ -1064,7 +1061,7 @@
       console.log('new jedi');
     }
 
-    // bad
+    // ruim
     Jedi.prototype = {
       fight: function fight() {
         console.log('fighting');
@@ -1075,7 +1072,7 @@
       }
     };
 
-    // good
+    // bom
     Jedi.prototype.fight = function fight() {
       console.log('fighting');
     };
@@ -1088,7 +1085,7 @@
   - Constructor methods should try to return `this`. This helps with method chaining which is often useful.
 
     ```javascript
-    // bad
+    // ruim
     Jedi.prototype.jump = function() {
       this.jumping = true;
       return true;
@@ -1102,7 +1099,7 @@
     luke.jump(); // => true
     luke.setHeight(20) // => undefined
 
-    // good
+    // bom
     Jedi.prototype.jump = function() {
       this.jumping = true;
       return this;
@@ -1175,17 +1172,17 @@
   - Prefix jQuery object variables with a `$`.
 
     ```javascript
-    // bad
+    // ruim
     var sidebar = $('.sidebar');
 
-    // good
+    // bom
     var $sidebar = $('.sidebar');
     ```
 
   - Cache jQuery lookups.
 
     ```javascript
-    // bad
+    // ruim
     function setSidebar() {
       $('.sidebar').hide();
 
@@ -1196,7 +1193,7 @@
       });
     }
 
-    // good
+    // bom
     function setSidebar() {
       var $sidebar = $('.sidebar');
       $sidebar.hide();
@@ -1212,16 +1209,16 @@
   - Scope jQuery object queries with find. [jsPerf](http://jsperf.com/jquery-find-vs-context-sel/13)
 
     ```javascript
-    // bad
+    // ruim
     $('.sidebar ul').hide();
 
-    // bad
+    // ruim
     $('.sidebar > ul').hide();
 
-    // bad
+    // ruim
     $('.sidebar', 'ul').hide();
 
-    // good
+    // bom
     $('.sidebar').find('ul').hide();
     ```
 
