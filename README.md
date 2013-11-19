@@ -96,21 +96,20 @@
     var item = {};
     ```
 
-  - Don't use [reserved words](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Reserved_Words) as keys.
-  - Não utilize [palavars reservadas do javascript](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Reserved_Words) como índices de objetos.
+  - Não utilize [palavras reservadas do javascript](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Reserved_Words) como índices de objetos.
 
 
     ```javascript
     // ruim
     var superHomem = {
-      class   : 'super heroí', // class é uma palavra reservada para um possível uso futuro do javascript
+      class   : 'super heroi', // class é uma palavra reservada para um possível uso futuro do javascript
       default : { clark: kent }, // default é uma palavra utilizada no 'switch ... case'
       private : true // private é uma palavra reservada para um possível uso futuro do javascript
     };
 
     // bom
     var superHomem = {
-      classe   : 'super heroí', // escreva em portugues ou trocando uma letra (ex.: klass)
+      classe   : 'super heroi', // escreva em portugues ou trocando uma letra (ex.: klass)
       defaults : { clark: kent }, // plural
       hidden   : true // troque por uma palavra com mesmo significado
     };
@@ -141,7 +140,7 @@
   ```javascript
     // ruim
     var superHomem = {
-      'class'  : 'super heroí',
+      'class'  : 'super heroi',
       'default': { clark: kent },
       'private': true 
     };
