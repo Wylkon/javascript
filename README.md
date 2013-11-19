@@ -325,7 +325,6 @@
 
 ## <a name='propriedades'>Propriedades</a>
 
-  - Use dot notation when accessing properties.
   - Use ponto ```.``` para acessar propriedades.
 
     ```javascript
@@ -385,7 +384,6 @@
         dragonball = 'z';
     ```
 
-  This is helpful when later on you might need to assign a variable depending on one of the previous assigned variables.
   - Declare as variáveis não inicializadas por último. Será útil depois quando você precisar declarar o valor dependendo do valor de outra já declarada.
     ```javascript
     // ruim
@@ -406,7 +404,6 @@
         i, tamanho;
     ```
 
-  - Assign variables at the top of their scope. This helps avoid issues with variable declaration and assignment hoisting related issues.
   - Declare as variáveis no topo do escopo onde ela se encontra. Isso ajuda a evitar problemas com declaração de variáveis e [Hoisting](#hoisting).
     ```javascript
     // ruim
