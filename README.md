@@ -304,7 +304,7 @@
     }
     ```
 
-  - Nunca nomeie um parâmetro como 'arguments'. Isso sobrescrevá o objeto 'arguments' que é passado para cada função.
+  - Nunca nomeie um parâmetro como ```arguments```. Isso sobrescrevá o objeto ```arguments``` que é passado para cada função.
     ```javascript
     // ruim
     function errado(nome, opcoes, arguments) {
