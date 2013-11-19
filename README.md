@@ -96,8 +96,7 @@
     var item = {};
     ```
 
-  - Don't use [reserved words](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Reserved_Words) as keys.
-  - Não utilize [palavars reservadas do javascript](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Reserved_Words) como índices de objetos.
+  - Não utilize [palavras reservadas do javascript](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Reserved_Words) como índices de objetos.
 
 
     ```javascript
