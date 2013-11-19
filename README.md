@@ -199,7 +199,6 @@
     var nomeCompleto = 'João' + this.sobrenome;
     ```
 
-  - Strings longer than 80 characters should be written across multiple lines using string concatenation.
   - Strings maiores que 80 caracteres devem ser escritas em múltiplas linhas, usando concatenação.
 
     ```javascript
@@ -305,7 +304,6 @@
     }
     ```
 
-  - Never name a parameter `arguments`, this will take precendence over the `arguments` object that is given to every function scope.
   - Nunca nomeie um parâmetro como 'arguments'. Isso sobrescrevá o objeto 'arguments' que é passado para cada função.
     ```javascript
     // ruim
