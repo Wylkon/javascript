@@ -11,7 +11,7 @@
   1. [Strings](#strings)
   1. [Funções](#funcoes)
   1. [Propriedades](#propriedades)
-  1. [Variables](#variables)
+  1. [Variáveis](#variaveis)
   1. [Hoisting](#hoisting)
   1. [Conditional Expressions & Equality](#conditionals)
   1. [Blocks](#blocks)
@@ -358,92 +358,92 @@
 
     **[[⬆]](#TOC)**
 
+## <a name='variaveis'>Variáveis</a>
 
-## <a name='variables'>Variables</a>
+  - Sempre use ```var``` para declarar variáveis. Não fazer isso irá resultar em variáveis globais. Devemos evitar poluir o namespace global.
 
-  - Always use `var` to declare variables. Not doing so will result in global variables. We want to avoid polluting the global namespace. Captain Planet warned us of that.
 
     ```javascript
     // ruim
-    superPower = new SuperPower();
+    habilidade = new SuperPoder();
 
     // bom
-    var superPower = new SuperPower();
+    var habilidade = new SuperPoder();
     ```
 
-  - Use one `var` declaration for multiple variables and declare each variable on a newline.
+    - Use somente uma declaração ```var``` para múltiplas variáveis e declares cada variável em uma nova linha, mantendo a identação.
 
     ```javascript
     // ruim
-    var items = getItems();
-    var goSportsTeam = true;
+    var items = buscaItems();
+    var possuiTime = true;
     var dragonball = 'z';
 
     // bom
-    var items = getItems(),
-        goSportsTeam = true,
+    var items = buscaItems(),
+        possuiTime = true,
         dragonball = 'z';
     ```
 
-  - Declare unassigned variables last. This is helpful when later on you might need to assign a variable depending on one of the previous assigned variables.
-
+  This is helpful when later on you might need to assign a variable depending on one of the previous assigned variables.
+  - Declare as variáveis não inicializadas por último. Será útil depois quando você precisar declarar o valor dependendo do valor de outra já declarada.
     ```javascript
     // ruim
-    var i, len, dragonball,
-        items = getItems(),
-        goSportsTeam = true;
+    var i, tamanho, dragonball,
+        items = buscaItems(),
+        possuiTime = true;
 
     // ruim
-    var i, items = getItems(),
+    var i, items = buscaItems(),
         dragonball,
-        goSportsTeam = true,
-        len;
+        possuiTime = true,
+        tamanho;
 
     // bom
-    var items = getItems(),
-        goSportsTeam = true,
+    var items = buscaItems(),
+        possuiTime = true,
         dragonball,
-        i, length;
+        i, tamanho;
     ```
 
   - Assign variables at the top of their scope. This helps avoid issues with variable declaration and assignment hoisting related issues.
-
+  - Declare as variáveis no topo do escopo onde ela se encontra. Isso ajuda a evitar problemas com declaração de variáveis e [Hoisting](#hoisting).
     ```javascript
     // ruim
     function() {
-      test();
-      console.log('doing stuff..');
+      teste();
+      console.log('fazendo algo..');
 
-      //..other stuff..
+      //..mais código..
 
-      var name = getName();
+      var nome = buscaNome();
 
-      if (name === 'test') {
+      if (nome === 'teste') {
         return false;
       }
 
-      return name;
+      return nome;
     }
 
     // bom
     function() {
-      var name = getName();
+      var nome = buscaNome();
 
-      test();
-      console.log('doing stuff..');
+      teste();
+      console.log('fazendo algo..');
 
-      //..other stuff..
+      //..mais código..
 
-      if (name === 'test') {
+      if (nome === 'teste') {
         return false;
       }
 
-      return name;
+      return nome;
     }
 
     // ruim
     function() {
-      var name = getName();
+      var nome = buscaNome();
 
       if (!arguments.length) {
         return false;
@@ -458,7 +458,7 @@
         return false;
       }
 
-      var name = getName();
+      var nome = buscaNome();
 
       return true;
     }
