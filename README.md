@@ -10,7 +10,7 @@
   1. [Arrays](#arrays)
   1. [Strings](#strings)
   1. [Funções](#funcoes)
-  1. [Properties](#properties)
+  1. [Propriedades](#propriedades)
   1. [Variables](#variables)
   1. [Hoisting](#hoisting)
   1. [Conditional Expressions & Equality](#conditionals)
@@ -323,36 +323,37 @@
 
 
 
-## <a name='properties'>Properties</a>
+## <a name='propriedades'>Propriedades</a>
 
   - Use dot notation when accessing properties.
+  - Use ponto ```.``` para acessar propriedades.
 
     ```javascript
     var luke = {
-      jedi: true,
-      age: 28
+      jedi  : true,
+      idade : 28
     };
 
     // ruim
-    var isJedi = luke['jedi'];
+    var mestreJedi = luke['jedi'];
 
     // bom
-    var isJedi = luke.jedi;
+    var mestreJedi = luke.jedi;
     ```
 
-  - Use subscript notation `[]` when accessing properties with a variable.
+  - Use colchetes ```[]``` para acessar propriedades através de uma variável.
 
     ```javascript
     var luke = {
-      jedi: true,
-      age: 28
+      jedi  : true,
+      idade : 28
     };
 
-    function getProp(prop) {
-      return luke[prop];
+    function retornaPropriedade(propriedade) {
+      return luke[propriedade];
     }
 
-    var isJedi = getProp('jedi');
+    var mestreJedi = retornaPropriedade('jedi');
     ```
 
     **[[⬆]](#TOC)**
