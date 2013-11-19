@@ -118,27 +118,21 @@
     
     Segue a lista de palavars reservadas do javascript:
 
-    | Palavras que já existem no JS       |
-    | ---------- |:----------:| ---------:|
-    | case       | finally    | switch    |
-    | catch      | for        | this      |
-    | continue   | function   | throw     |
-    | debugger   | if         | try       |
-    | default    | in         | typeof    |
-    | delete     | instanceof | var       |
-    | do         | new        | void      |
-    | else       | return     | null      |
-    | with       | while      |           |
-    | true       | false      |           |
-    | ---------- |:----------:| ---------:|
-    | Reservadas para uso futuro          |
-    | ---------- |:----------:| ---------:|
-    | class      | enum       | export    |
-    | extends    | import     | super     |
-    | implements | interface  | let       |
-    | package    | private    | protected |
-    | public     | static     | yield     |
-    | const      |            |           |
+    ```javascript
+    // Palavras que já existem no JS 
+    case        finally      switch   true       do
+    catch       for          this     false      new
+    continue    function     throw    while      void
+    debugger    if           try      with       else
+    default     in           typeof   null       return
+    delete      instanceof   var        
+
+    // Reservadas para uso futuro
+    class       enum         export      const
+    extends     import       super       yield
+    implements  interface    let         static
+    package     private      protected   public                                  
+    ```
 
     Utilizando ```"use strict"``` o javascript avisa quando você usa alguma dessas palavras no seu código.
 
