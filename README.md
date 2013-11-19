@@ -5,8 +5,8 @@
 
 ## <a name='TOC'>Table of Contents</a>
 
-  1. [Types](#types)
-  1. [Objects](#objects)
+  1. [Tipos](#tipos)
+  1. [Objetos](#objects)
   1. [Arrays](#arrays)
   1. [Strings](#strings)
   1. [Functions](#functions)
@@ -33,9 +33,9 @@
   1. [Contributors](#contributors)
   1. [License](#license)
 
-## <a name='types'>Types</a>
+## <a name='tipos'>Tipos</a>
 
-  - **Primitives**: When you access a primitive type you work directly on its value
+  - **Primitivos**: Quando você acessa um tipo primitivo você trabaha diretamente no seu valor
 
     + `String`
     + `Number`
@@ -44,26 +44,42 @@
     + `undefined`
 
     ```javascript
-    var foo = 1,
-        bar = foo;
+    var teste = 1,
+        demo = teste;
 
-    bar = 9;
+    demo = 9;
 
-    console.log(foo, bar); // => 1, 9
+    console.log(teste, demo); // exibe: 1, 9
     ```
-  - **Complex**: When you access a complex type you work on a reference to its value
+  - **Complex**: Quando você acessa um tipo complexo você utiliza uma referência para seu valor
 
     + `Object`
     + `Array`
     + `Function`
 
     ```javascript
-    var foo = [1, 2],
-        bar = foo;
+    var teste = [1, 2],
+        demo = teste;
 
-    bar[0] = 9;
+    demo[0] = 9;
 
-    console.log(foo[0], bar[0]); // => 9, 9
+    console.log(teste[0], demo[0]); // exibe: 9, 9
+    ```
+    
+    Os dois, teste[0] e demo[0], são iguais à 9 porque ao igualá-los, fazem referencia ao mesmo objeto, então alterar um é a mesma coisa que alterar o outro.
+    
+    Outro exemplo:
+    
+    ```javascript
+    var pessoa1 = {nome: "João", idade: 32};
+    var pessoa2 = pessoa1;
+    
+    console.log( pessoa1 ); // exibe: Object {nome: "João", idade: 32}
+    console.log( pessoa2 ); // exibe: Object {nome: "João", idade: 32}
+
+    pessoa2.nome = 'Maria';
+    console.log( pessoa1 ); // exibe: Object {nome: "Maria", idade: 32}
+    console.log( pessoa2 ); // exibe: Object {nome: "Maria", idade: 32}
     ```
 
     **[[⬆]](#TOC)**
